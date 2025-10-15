@@ -1,0 +1,150 @@
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>公主與保鑣 💕</title>
+  <link rel="icon" type="image/x-icon" href="images/love01.jpg">
+  <link rel="stylesheet" href="love.styles/love.css">
+</head>
+
+<body>
+  <!-- 音樂播放按鈕 -->
+  <button id="play-btn">💖 點我開始回憶 💖</button>
+  <audio id="bg-music" loop>
+    <source src="video/love00.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- 星空背景 -->
+  <div class="stars"></div>
+
+  <header>
+    <h1>💫 我們的一周年回憶 💫</h1>
+    <p>點擊照片，看看我們的故事 💖</p>
+  </header>
+
+  <!-- 相片牆 -->
+  <div class="gallery">
+    <div class="photo">
+      <img src="images/love02.jpg" alt="回憶1">
+      <div class="caption">第一次來新竹，幫我過生日。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love03.jpg" alt="回憶2">
+      <div class="caption">第一次來接我下班。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love04.jpg" alt="回憶3">
+      <div class="caption">累得要死還是要陪我去台南上學。</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/love21.JPEG" alt="回憶4">
+      <div class="caption">欠揍的你。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love07.JPEG" alt="回憶5">
+      <div class="caption">第一張不情願拍貼。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love08.JPEG" alt="回憶6">
+      <div class="caption">來載公主下班。</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/love09.JPEG" alt="回憶7">
+      <div class="caption">很甜的餅乾，超甜的我們。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love10.JPEG" alt="回憶8">
+      <div class="caption">陪他剪的第7次頭毛。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love11.JPEG" alt="回憶9">
+      <div class="caption">公主的畢業典禮。</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/love12.jpg" alt="回憶10">
+      <div class="caption">大手牽小手。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love22.JPEG" alt="回憶11">
+      <div class="caption">不是在等我下班就是等我下班的路上。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love23.jpg" alt="回憶12">
+      <div class="caption">永遠有親不完的吻。</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/love15.jpg" alt="回憶13">
+      <div class="caption">說要帶我去拍美照。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love16.jpg" alt="回憶14">
+      <div class="caption">一起吃了一份難吃的冰淇淋。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love17.jpg" alt="回憶15">
+      <div class="caption">怕我關在家發瘋，趕緊帶我去公園散步。</div>
+    </div>
+
+    <div class="photo">
+      <img src="images/love18.jpg" alt="回憶16">
+      <div class="caption">生氣他不主動找我拍照。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love19.JPEG" alt="回憶17">
+      <div class="caption">很幸福的一刻。</div>
+    </div>
+    <div class="photo">
+      <img src="images/love20.JPEG" alt="回憶18">
+      <div class="caption">第一個遊樂園：六福村。</div>
+    </div>
+  </div>
+
+  <script>
+  const playBtn = document.getElementById("play-btn");
+  const music = document.getElementById("bg-music");
+
+  // 進場時淡入播放按鈕
+  window.addEventListener("load", () => {
+    playBtn.style.opacity = "1";
+  });
+
+  // ✅ 點擊播放音樂並隱藏按鈕
+  playBtn.addEventListener("click", () => {
+    music.play()
+      .then(() => {
+        playBtn.classList.add("hide"); // 按鈕淡出
+      })
+      .catch(err => {
+        console.log("播放被阻止，請使用者手動啟動：", err);
+      });
+  });
+
+  // 星空閃爍特效
+  const starContainer = document.querySelector('.stars');
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.classList.add('star');
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.animationDuration = 1 + Math.random() * 2 + 's';
+    starContainer.appendChild(star);
+  }
+
+  // 點擊飄愛心特效
+  document.querySelectorAll('.photo img').forEach(img => {
+    img.addEventListener('click', e => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+      heart.style.left = e.pageX + 'px';
+      heart.style.top = e.pageY + 'px';
+      setTimeout(() => heart.remove(), 2000);
+    });
+  });
+</script>
+</body>
+</html>

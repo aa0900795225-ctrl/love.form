@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>💌 給保鑣的問卷 💌</title>
+  <link rel="icon" type="image/x-icon" href="images/love01.jpg">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffd6e8, #ffe6f2);
+      font-family: "Microsoft JhengHei", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #e75480;
+      font-size: 2em;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px 35px;
+      border-radius: 25px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      color: #555;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      outline: none;
+      transition: 0.3s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #ff7aa8;
+      box-shadow: 0 0 10px #ffb6c1;
+    }
+
+    button {
+      background-color: #ff7aa8;
+      color: white;
+      font-size: 1.1em;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #ff4d88;
+      transform: scale(1.05);
+    }
+
+    /* 浪漫飄愛心動畫 */
+    .heart {
+      position: absolute;
+      color: #ff5c93;
+      font-size: 28px;
+      animation: float 3s linear forwards;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @keyframes float {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-150px) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 給保鑣的問卷 💌</h1>
+
+  <form id="loveForm">
+    <label>1️⃣ 第一次見到我時的感覺？</label>
+    <textarea required></textarea>
+
+    <label>2️⃣ 最喜歡我的哪一點？</label>
+    <textarea required></textarea>
+
+    <label>3️⃣ 相處到現在最受不了什麼？</label>
+    <input type="text" required>
+
+    <label>4️⃣ 如果可以再選擇一次交往對象，我還會第一選項嗎？</label>
+    <textarea required></textarea>
+
+    <label>5️⃣ 想對我說的一句話 💖</label>
+    <textarea required></textarea>
+
+    <button type="submit">送出 💌</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('loveForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      // 飄出幾顆愛心
+      for (let i = 0; i < 8; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.top = Math.random() * window.innerHeight + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+
+      // 延遲1.5秒再跳轉
+      setTimeout(() => {
+        window.location.href = 'love.html'; // ← 主網頁路徑
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
